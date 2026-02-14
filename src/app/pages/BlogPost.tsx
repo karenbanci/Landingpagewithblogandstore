@@ -40,6 +40,10 @@ export function BlogPost() {
   }
 
   const post = useDatabase ? devocional : blogPosts.find((p) => p.id === id);
+  console.log(
+    useDatabase ? "Using database devocional:" : "Using static post:",
+    post,
+  );
 
   if (loading) {
     return (
