@@ -1,11 +1,13 @@
 {
   "name": "@figma/my-make-file",
+  "homepage": "https://karenbanci.github.io/Landingpagewithblogandstore/",
   "private": true,
   "version": "0.0.1",
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "deploy": "vite build && npx gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
