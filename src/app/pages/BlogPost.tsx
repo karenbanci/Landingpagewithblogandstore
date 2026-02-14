@@ -17,11 +17,14 @@ export function BlogPost() {
 
   async function loadDevocional() {
     try {
+      console.log("Fetching devocional from supabase with id:", id);
       const { data, error } = await supabase
         .from("devocionais")
         .select("*")
         .eq("id", id)
         .single();
+      console.log("Supabase fetch result - data:", data);
+      console.log("Supabase fetch result - error:", error);
 
       if (error || !data) {
         setUseDatabase(false);
@@ -66,13 +69,16 @@ export function BlogPost() {
   }
 
   // Adaptar estrutura do banco de dados para o componente
-  const displayPost = useDatabase ? {
-    id: post.id,
-    title: (post as Devocional).title,
-    imageUrl: (post as Devocional).image_url || "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
-    date: (post as Devocional).date,
-    verse: (post as Devocional).verse_reference,
-    content: `
+  const displayPost = useDatabase
+    ? {
+        id: post.id,
+        title: (post as Devocional).title,
+        imageUrl:
+          (post as Devocional).image_url ||
+          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
+        date: (post as Devocional).date,
+        verse: (post as Devocional).verse_reference,
+        content: `
       <div class="mb-8 p-6 bg-amber-50 border-l-4 border-amber-700 rounded">
         <p class="text-lg italic text-slate-700">"${(post as Devocional).verse}"</p>
         <p class="text-sm text-slate-600 mt-2">${(post as Devocional).verse_reference}</p>
@@ -84,7 +90,8 @@ export function BlogPost() {
         <p class="text-slate-700 italic whitespace-pre-line">${(post as Devocional).prayer}</p>
       </div>
     `,
-  } : post;
+      }
+    : post;
 
   return (
     <div className="min-h-screen bg-slate-50">
