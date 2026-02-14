@@ -10,6 +10,7 @@ export function Header() {
     { path: "/", label: "Início" },
     { path: "/blog", label: "Devocionais" },
     { path: "/produtos", label: "Produtos" },
+    { path: "/sobre", label: "Sobre Nós" },
   ];
 
   return (
