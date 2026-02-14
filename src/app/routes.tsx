@@ -9,19 +9,22 @@ import { Login } from "./pages/Login";
 import { Admin } from "./pages/Admin";
 import { NotFound } from "./pages/NotFound";
 
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    Component: Layout,
-    children: [
-      { index: true, Component: Home },
-      { path: "blog", Component: Blog },
-      { path: "blog/:id", Component: BlogPost },
-      { path: "produtos", Component: Produtos },
-      { path: "sobre", Component: About },
-      { path: "login", Component: Login },
-      { path: "admin", Component: Admin },
-      { path: "*", Component: NotFound },
-    ],
-  },
-]);
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      Component: Layout,
+      children: [
+        { index: true, Component: Home },
+        { path: "blog", Component: Blog },
+        { path: "blog/:id", Component: BlogPost },
+        { path: "produtos", Component: Produtos },
+        { path: "sobre", Component: About },
+        { path: "login", Component: Login },
+        { path: "admin", Component: Admin },
+        { path: "*", Component: NotFound },
+      ],
+    },
+  ],
+  { basename: "/Landingpagewithblogandstore/" },
+);
